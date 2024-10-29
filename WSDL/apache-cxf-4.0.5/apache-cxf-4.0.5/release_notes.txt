@@ -1,0 +1,96 @@
+Apache CXF 4.0.5 Release Notes
+
+1. Overview
+
+The 4.0.x versions of Apache CXF is a significant new version of CXF
+that provides several new features and enhancements.  
+
+New features include:
+* The release is based on JakartaEE 9.1: the javax.* packages are migrated to jakarta.*
+* Support of Spring Framework 6 / Spring Boot 3
+* HTTP/2 support
+
+Important notes:
+* Many features of CXF 4.x now require Java 17.  While CXF is compiled for Java 11,
+many of the dependencies require Java 17 and thus various features may only
+work with Java 17.
+
+Users are encouraged to review the migration guide at:
+https://cxf.apache.org/docs/40-migration-guide.html
+for further information and requirements for upgrading from earlier
+versions of CXF.
+
+
+4.0.5 fixes over 19 JIRA issues reported by users and the community.
+
+
+2. Installation Prerequisites 
+
+Before installing Apache CXF, make sure the following products,
+with the specified versions, are installed on your system:
+
+    * Java 17 Development Kit
+    * Apache Maven 3.x to build the samples
+
+
+3.  Integrating CXF Into Your Application
+
+If you use Maven to build your application, you need merely add
+appropriate dependencies. See the pom.xml files in the samples.
+
+If you don't use Maven, you'll need to add one or more jars to your
+classpath. The file lib/WHICH_JARS should help you decide which 
+jars you need.
+
+4. Building the Samples
+
+Building the samples included in the binary distribution is easy. Change to
+the samples directory and follow the build instructions in the README.txt file 
+included with each sample.
+
+5. Reporting Problems
+
+If you have any problems or want to send feedback of any kind, please e-mail the
+CXF dev list, dev@cxf.apache.org.  You can also file issues in JIRA at:
+
+http://issues.apache.org/jira/browse/CXF
+
+6. Migration notes:
+
+See the migration guide at:
+http://cxf.apache.org/docs/40-migration-guide.html
+for caveats when upgrading.
+
+7. Specific issues, features, and improvements fixed in this version
+
+** Bug
+    * [CXF-8951] - Concurrent WebClient usage causes massive thread overhead
+    * [CXF-8980] - JaxRS client - receive timeout not working since CXF 4.0.1
+    * [CXF-8987] - Java 21 - HttpClientHTTPConduit thread locked during shutdown 
+    * [CXF-9007] - NullPointerException in XMLStreamDataWriter.writeNode
+    * [CXF-9009] - Async operations fail in concurrent calls
+    * [CXF-9011] - WSDLTo JAXWS Frontend service.vm Velocity template uses deprecated URL constructor
+    * [CXF-9015] - Typo in JsonMapObjectReaderWriter treats \h as a special character instead of \n
+    * [CXF-9030] - "-suppress-generated-date" does not omit timestamps from @Generated
+
+
+
+
+** Improvement
+    * [CXF-8971] - Introduce a customerizedAlgorithmSuite and make all parameters of it configurable
+    * [CXF-8982] - LoggingFeature does not hide sensitive xml elements with namespace prefix
+    * [CXF-8988] - Update to Spring Security 6.1.x release line
+    * [CXF-8996] - JAXRS Bean introspection utility Beanspector relies on Class.getMethods natural order
+    * [CXF-9016] - Upgrade Spring-Framework to 5.3.34 in Apache-cxf
+
+** Test
+    * [CXF-8994] - CorbaConduitTest no longer requires IBM JDK destination activation routine.
+    * [CXF-8997] - AbstractSTSTokenTest and TransportBindingTests no longer need to set https protocol to TLSv1 on IBM Java
+    * [CXF-8999] - KerberosTokenTest testKerberosViaCustomTokenAction should not run on IBM Java
+    * [CXF-9006] - TrustedAuthorityValidatorCRLTest#testIsCertChainValid fails when using Red Hat OpenJDK on PPC64LE
+    * [CXF-9019] - Increase unit test coverage on cxf-rt-frontend-jaxws jaxws spi package.
+
+
+** Task
+    * [CXF-9001] - CDI extension not comptible with IBM Semeru
+
